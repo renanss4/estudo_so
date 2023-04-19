@@ -1,0 +1,28 @@
+Este arquivo serve para eu anotar todo o meu aprendizado sobre o Windows.
+
+Prompt de comando -> cmd
+    para abrir basta ir no botão iniciar > pesquisar cmd ou,
+    tecla Windows + R > digitar cmd
+
+Comandos:
+    echo -> imprime algo no console/tela
+    dir -> mostra os diretórios/pastas/arquivos que estão
+        dentro da pasta que o comando é feito 
+    cd -> navega entre os diretórios / cd .. -> volta
+    mkdir -> cria uma pasta 
+    rmdir -> remover uma pasta
+    move -> move arquivos para diretórios
+        move arquivo pasta
+    type -> mostra o conteúdo dentro de um arquivo txt
+    > -> a setinha de maior mostra para onde quero que seja encaminhado
+        redirecionar a saída de um comando
+        echo ola > dicas2.txt -> está dizendo que criará dicas2.txt com o texto ola
+    copy -> copia um arquivo para um diretório 
+        copy nome_arquivo nome_arquivo_copiado
+    rename -> renomeia um arquivo
+        rename nome_arquivo nome_arquivo_renomeado
+    del -> deleta o arquivo
+    cls -> limpa tela
+    tree -> mostra as pastas e subpastas organizadas em uma árvore
+    help -> dá uma pequena ajuda de um comando 
+
