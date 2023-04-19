@@ -1,0 +1,198 @@
+Este arquivo serve para eu anotar todo o meu aprendizado sobre linux. Seus diretórios, sua história, seus comandos, etc..
+
+Conheça o sistema de diretórios do Linux
+Trabalhe com a linha de comando sem medo
+Compacte e descompacte seus arquivos
+Edição no console usando o VI
+
+Comandos:
+    ls -> lista os diretórios
+    ls -l -> lista cm informações
+    ls -la -> lista com informações porém, lista também os ocultos
+    pwd -> mostra o diretório que estou 
+    echo -> imprime algo
+    > -> redireciona para um arquivo
+        > bemvindo.txt -> redireciona para o arquivo bemvindo.txt
+    >> -> utilizando as duas setinhas ele adiciona ao invés de reescrever
+    cat -> serve para ler o arquivo
+    man -> comando de manual, ele mostra como utilizar certo comando
+    cd -> se movimenta entre os diretórios 
+    mkdir -> cria um diretório novo
+    rmdir -> remove um diretório
+    rm -> apagar arquivo
+    * -> para tudo
+    ? -> para alguns complementos
+    "" -> com as aspas ele pode ler caracteres especiais
+    rm -r -> remove tudo, tomar cuidado com este comando
+    cp -> copia um arquivo (se eu quiser copiar um diretório, é preciso passar o -r de recursivo)
+        cp nome-antigo.txt nome-nome.txt
+    mv -> move um arquivo para outro/renomeando
+        mv nome-antigo.txt nome-antigo2.txt -> apenas renomeando
+        mv nome-antigo.txt ./projeto -> movendo para o diretório
+
+    se eu quiser compactar um diretório/arquivo, basta seguir a linha abaixo:
+    zip nome1.zip nome/ -> compactando o diretório nome dando o nome de nome1
+        em geral é bom utilizar o -r para compactar tudo
+
+    unzip -l nome1.zip -> mostra o que tem dentro do arquivo compactado
+    unzip nome1.zip -> descompacta 
+
+    -q -> este argumento não retorna as coisas no terminal
+        executa o comando de forma silenciosa 
+
+    -v -> este argumento executa o comando de forma mai verbosa
+    
+    compactar no linux
+    tar -czf work.tar.gz workspace/
+        está compactando, o czf é create, zip e dê um nome
+    tar -xzf work.tar.gz 
+        está descompactand
+
+    touch -> só encosta no arquivo, para dizer que teve uma modificação, mesmo que seja na data
+    help -> para conseguir uma ajudinha
+
+    head -> por padrão ele lê as 10 primeras linhas de um arquivo muio grande
+        passando -n 4(4 linhas) para o número de linhas com o nome do arquivo para ser lido
+    tail -> funciona da mesma forma que o head, porém ao invés de ler o inicio, le o final do arquivo
+    less -> abre um arquivo, executa less com o nome do arquivo
+        utiliza-se o q para sair
+
+    whoami -> para descobrir o meu usuário
+
+    vi google.txt -> este comando serve como um editor de texto pelo terminal  
+        ao apertar a tecla "i", vai para o modo de inserção
+        ao apertar a tecla "esc", vai para o modo de navegação
+        no modo de navegação é possível apertar ":w" -> para salvar o arquivo
+        ":q" para sair do editor
+            :wq -> salva e quita
+        para remover uma linha por completo -> "dd"
+        a letra "x" remove caracteres
+        a letra "a", adiciona um segundo caractere no segundo caractere
+        yy -> copia uma linha
+        p -> cola
+
+        adicionando um número antes de apertar uma tecla de comando, o comando pode ser executado por 
+        várias vezes, exemplo: 10yy, irá copiar 10 linhas
+
+Controle absoluto dos processos rodando na sua máquina
+Variáveis de ambiente e o PATH sem mistérios
+Gerenciando pacotes com o APT
+Sistema de permissões
+SSH e SCP para comunicação remota
+Dê seus primeiros passos de maneira prática!
+    Descobrir quais são os processos que estão sendo executados em nossa máquina e como finalizar tais processos;
+Executar programas no background ou no foreground;
+Configurar programas para ter permissão de execução;
+Procurar arquivos no Sistema Operacional;
+Gerenciar novos usuários;
+Configurar as permissões de acesso aos arquivos;
+Configurar variáveis de ambiente;
+Instalar novos programas do zero;
+Inicializar e parar serviços que rodam junto com o início da máquina;
+Compilar e instalar um programa do zero a partir de seu código fonte;
+Fazer o acesso remoto às máquinas que rodam Linux;
+
+    ps -> mostra os processos que estão rodando no diretório
+    ps -e -> mostra todos os processos que estão rodando sem exceção
+    ps -ef -> mostra os precessos com mais informações
+
+        ps -ef | grep firefox
+            o sinal "|" redireciona para outro programa filtrando a linha com o comando "grep" pela palavra "firefox"
+                =!
+            o sinal "|" é =!(diferente) de ">", pois não estou saindo para um arquivo e sim para outro programa 
+
+    kill -> mata o processo
+        podemos utilizar o kill com o id de um certo processo
+    kill -9 -> ele mata o processo sem dar chance para o programa, no caso uma morte forçada
+    killall -> mata todo processo que foi executado de um mesmo programa
+    top -> este comando nos mostra o quanto cada processo etá utilizando da minha máquina
+
+    ctrl + z = para o programa
+    ctrl + c = mata/fecha o programa
+
+    pstree -> consigo listar os processos em forma de arvore  
+    jobs -> consigo ver processos parados
+    bg 1 -> passa o processo para rodar no background
+        se eu quiser o rodar algo no background logo de cara, posso executar o programa passando um &(e comercial em seguida)
+            spotify &
+    fg 1 -> passa o processo para rodar no foreground
+
+    bash -> suporta uma linguagem que nos permite criar nossos próprios programas, nossos próprios scripts
+        para executar de forma direta o programa, utilizamos o comando -> sh
+
+    gedit dorme & -> para criar o arquivo dorme e rodar no background
+    echo "Vou dormir"
+    sleep 5 -> sleep vai dizer quantos segundos para dormir
+    echo "Terminei de dormir"
+
+
+    os arquivos do linux podem ter permissão para leitura(r), escrita(w), execução(x)
+    existe um caractere especial que marca os diretórios(d)
+    cada permissão tem seu dono, grupo ou ouros usuários
+    seguindo sempre esta mesma ordem -> dono, grupo, usuários
+
+    chmod +x dorme -> estou mudando/alterando a capacidade que podem executar o arquivo dorme
+    chmod -x -> eu tiro a permissão de executar
+
+    locate -> para localizar arquivos e programas
+
+    para rodar programas sem precisar sempre passar um sh, ou um sudo, 
+    podemos mover para o root e permitindo que qualquer usuário possa executar o comando
+
+    sudo -> executa comandos como o root
+    passwd -> para mudar a senha do usuário
+    sudo passwd -> para mudar a senha do root
+
+    su nome_usuario -> esse comando muda de usuario
+
+    adduser jose -> estou adicionando um novo usuario
+    o essencial para quando adicionar um usuário é que devemos, por dentro de cada usuário modificar as permissões com o chmod
+        chmod g/u/o-rx jose -> g para grup, u para users e o de others
+
+    env -> consigo ver todas as minhas variáveis de ambiente
+        env | grep PATH -> vejo todas as minhas variáveis de ambiente que contém o PATH
+
+    para adicionar ao path segue o comando abaixo:
+        PATH=$PATH:/home/renan/workspace -> estou dizendo que o path é igual ao path atual mais o workspace do renan
+            porém toda vez que o terminal ser fechado e aberto novamente, a variável PATH vai voltar ao seu estado normal
+                entre outras palavras, o comando acima não salva para sempre
+    para adicionar de forma permanente é preciso modificar o arquivo .bashrc, vamos seguir os passos abaixo:
+        ls -al -> para procurar o bashrc
+        gedit .bashrc & -> vai abrir o arquivo no gedit e para ser executado no background
+            OBS: o .bashrc é um arquivo que é criado toda vez que abre-se uma nova aba do bash/terminal
+                então é possível adicionar o mesmo comando lá em cima no final do arquivo, dessa forma,
+                toda vez que abrir um novo terminal, já vai estar colocando o arquivo no path de forma automática
+        
+    sudo apt-get upgrade -> para atualizar programas/arquivos
+    apt-get insall -> para instalar
+    apt-cache search ftp -> para ver o que posso instalar
+    apt-get remove -> para desinstalar 
+
+    para instalar arquivos .deb da internet podemos seguir o comando abaixo
+        sudo dpkg -i arquivo.deb
+
+    para remover seria -> dpkg -r arquivo(de remove)
+
+    para parar/iniciar um serviço da nossa máquina:
+        service nome_servico stop/start
+
+    é possível instalar um programa direto do seu código fonte:
+        primeiro baixamos no navegador, o arquivo tar.gz (compactado)
+        em seguida, nós podemos seguir o passo abaixo:
+
+        executar o script ./configure
+            em caso de erro, instalar a biblioteca que pede
+        make
+        make install
+
+
+    FTP: Troca de arquivos
+
+    SSH: Acesso ao terminal REMOTO 
+        para acessar outro servidor
+
+    sudo apt-get install ssh -> para instalar tanto o client quanto o service
+    para acessar e executar -> ssh -x user@id
+
+    para copiar um arquivo da local para a remota
+    scp work.zip user@id:home/user 
